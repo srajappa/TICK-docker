@@ -2,6 +2,8 @@ dbrp "telegraf"."autogen"
 
 stream
     |from()
-        .measurement('cpu')
+        .measurement('disk')
     |alert()
-        .crit(lambda: "usage_idle" < 30)
+        .crit(lambda: "used_percent" > 60)
+        .info(lambda: "used_percent" > 10)
+    |httpPost('http://10.0.0.10:8086/write?db=telegraf')

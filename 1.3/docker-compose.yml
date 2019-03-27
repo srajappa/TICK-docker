@@ -41,7 +41,7 @@ services:
     ports:
       - "9092:9092"
     volumes:
-      - /tmp/:/tmp
+      - ./mirror_udf.tick/:/tmp/mirror_udf.tick
   # Define a service for using the influx CLI tool.
   # docker-compose run influxdb-cli
   # influxdb-cli:
